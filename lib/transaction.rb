@@ -1,7 +1,9 @@
+# classes transaction
+
 class Transaction
   attr_reader :date, :transaction
 
-  def initialize()
+  def initialize
     @date = 0
     @transaction = 0
   end
