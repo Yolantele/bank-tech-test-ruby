@@ -13,8 +13,11 @@ describe Transaction do
       expect(t.date).to eq('2018-01-29')
     end
   end
-  # describe 'withdraw' do
-  #   it 'deducts money' do
-  #     expect(transaction.)
-  # end
+  describe 'transactions' do
+    it 'can deduct money' do
+      t = Transaction.new
+      t.withdraw(90)
+      expect(t.transaction).to eq(-90)
+    end
+  end
 end
