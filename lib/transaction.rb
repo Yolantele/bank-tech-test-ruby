@@ -13,15 +13,11 @@ class Transaction
   end
 
   def withdraw(sum)
-    if allow_transaction?
-      @transaction -= sum
-    end
+    @transaction -= sum if credible?(sum)
   end
 
   def deposit(sum)
-    if allow_transaction?
-      @transaction += sum
-    end
+    @transaction += sum if credible?(sum)
   end
 
   private
@@ -32,5 +28,8 @@ class Transaction
       return true
     end
   end
-  
+
+  def credible?(sum)
+    raise if sum == 0 || !allow_transaction?
+  end
 end
