@@ -13,12 +13,24 @@ class Transaction
   end
 
   def withdraw(sum)
-    time_stamp
-    @transaction -= sum
+    if allow_transaction?
+      @transaction -= sum
+    end
   end
 
   def deposit(sum)
-    time_stamp
-    @transaction += sum
+    if allow_transaction?
+      @transaction += sum
+    end
   end
+
+  private
+
+  def allow_transaction?
+    if @date == 0
+      time_stamp
+      return true
+    end
+  end
+  
 end
